@@ -1,0 +1,22 @@
+#:kivy 1.0.9
+#:import random random.random
+#:import randint random.randint
+
+<Talpa>:
+    size_hint: 0.05, 0.05
+    pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
+    background_normal: '../data/talpa' + str(randint(1, 5)) + '.jpeg'
+
+<AcchiappaLaTalpa>:
+    Label:
+        size_hint: None, None
+        font_size: 70
+        pos_hint: {"center_x": 0.25, "top": 0.99}
+        text: str(root.prese)
+
+    Label:
+        size_hint: None, None
+        color: 1,0,0,1
+        font_size: 70
+        pos_hint: {"center_x": 0.75, "top": 0.99}
+        text: str(root.mancate)

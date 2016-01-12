@@ -1,0 +1,28 @@
+#:kivy 1.0.9
+
+
+<Talpa>:
+    size_hint: None, None
+    path: 'data/talpa{}.jpeg'.format(self.numero)
+    background_normal: self.path
+    background_down: self.path
+
+
+<Start>:
+    size_hint: 1.0/6, 1.0/6
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    text: "Start"
+
+<AcchiappaLaTalpa>:
+    Label:
+        size_hint: None, None
+        font_size: 70
+        pos_hint: {"center_x": 0.25, "top": 0.99}
+        text: str(root.prese)
+
+    Label:
+        size_hint: None, None
+        color: 1,0,0,1
+        font_size: 70
+        pos_hint: {"center_x": 0.75, "top": 0.99}
+        text: str(root.mancate)
