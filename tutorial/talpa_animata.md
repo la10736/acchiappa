@@ -37,12 +37,12 @@ nomi chiari. Aggiungiamo quindi alla classe `AcchiappaLaTalpa` i parametri `dime
 
 ```python
 class AcchiappaLaTalpa(FloatLayout):
-    ... e altra roba (NON SCRIVETELO)
+    ... e altra roba (DA NON SCRIVERE)
 
     dimansione_talpa = 0.1
     durata_talpa = 2
 
-    ... e altra roba (NON SCRIVETELO)
+    ... e altra roba (DA NON SCRIVERE)
     
     def talpa(self, *args):
         talpa = Talpa()
@@ -51,7 +51,7 @@ class AcchiappaLaTalpa(FloatLayout):
         animazione = Animation(size_hint=(self.dimansione_talpa, self.dimansione_talpa), duration=self.durata_talpa)
         animazione.start(talpa)
 
-    ... e altra roba (NON SCRIVETELO)
+    ... e altra roba (DA NON SCRIVERE)
 ```
 
 Ora proviamo a cambiare il tipo di animazione sostituendo `animazione = Animation(...)` con:
@@ -79,3 +79,110 @@ Esistono un sacco di [transizioni](https://kivy.org/docs/api-kivy.animation.html
 Inoltre e' possibile aggiungere animazioni successive con un semplice `+` o farle in parallelo usando `&`.... se 
 qualcuno volesse giocare.
 
+## Scomparire
+
+Quando l'animazione finisce la talpa deve scoparire e il numero dell talpe perse aumentare. Per fare questo dobbiano
+aggiungere una una funzione `talpa_mancata()` molto simile a `talpa_colpita()` ma invece di aumentare `prese` aumenta
+`mancate`. Questa funzione deve essere collagata a `on_complete` di `animazione` nella funzione `talpa()`.
+
+Aggiungiamo quindi alla classe `AcchiappaLaTalpa` la funzione `talpa_mancata()`:
+
+```python
+    def talpa_mancata(self, talpa):
+        self.mancate += 1
+        self.rimuovi_talpa(talpa)
+```
+
+e modifichiamo `talpa()` aggiungendo `animazione.on_complete = self.talpa_mancata` appena prima di 
+`animazione.start(talpa)`.La funzione `talpa()` diventa quindi:
+
+```python
+    def talpa(self, *args):
+        talpa = Talpa()
+        talpa.bind(on_press=self.talpa_colpita)
+        self.add_widget(talpa)
+        animazione = Animation(size_hint=(self.dimansione_talpa, self.dimansione_talpa), duration=self.durata_talpa,
+                               transition="out_elastic")
+        animazione.on_complete = self.talpa_mancata
+        animazione.start(talpa)
+```
+
+Provate, la talpa sparisce e il numero di quelle mancate aumenta. **Ma provate a cliccarla, il aumenteranno sia le 
+prese che le mancate**
+
+Quello che succede è che l'animazione viene completata anche dopo che la talpa viene rimossa: dobbiamo interrompere 
+l'animazione prima di rimuovere la talpa. Per farlo basta aggiungere `Animation.cancel_all(talpa)` a `rimuovi_talpa()` 
+che quindi diventa:
+
+```python
+    def rimuovi_talpa(self, talpa):
+        Animation.cancel_all(talpa)
+        self.remove_widget(talpa)
+```
+
+## Riassumendo
+
+Abbiamo aggiunto l'animazione della talpa e la rimozione alla fine con il controllo del punteggio delle talpe mancate.
+
+`main.kv`
+```python
+from kivy.animation import Animation
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.floatlayout import FloatLayout
+from kivy.properties import NumericProperty
+
+
+class Talpa(Button):
+    pass
+
+
+class AcchiappaLaTalpa(FloatLayout):
+    prese = NumericProperty(0)
+    mancate = NumericProperty(0)
+    dimansione_talpa = 0.1
+    durata_talpa = 2
+
+    def start(self):
+        self.prese = 0
+        self.mancate = 0
+        self.talpa()
+
+    def talpa(self, *args):
+        talpa = Talpa()
+        talpa.bind(on_press=self.talpa_colpita)
+        self.add_widget(talpa)
+        animazione = Animation(size_hint=(self.dimansione_talpa, self.dimansione_talpa), duration=self.durata_talpa,
+                               transition="out_elastic")
+        animazione.on_complete = self.talpa_mancata
+        animazione.start(talpa)
+
+    def talpa_colpita(self, talpa):
+        self.prese += 1
+        self.rimuovi_talpa(talpa)
+
+    def talpa_mancata(self, talpa):
+        self.mancate += 1
+        self.rimuovi_talpa(talpa)
+
+    def rimuovi_talpa(self, talpa):
+        Animation.cancel_all(talpa)
+        self.remove_widget(talpa)
+
+
+class AcchiappaApp(App):
+    def build(self):
+        acchiappa = AcchiappaLaTalpa()
+        acchiappa.start()
+        return acchiappa
+
+
+if __name__ == "__main__":
+    AcchiappaApp().run()
+```
+
+`acchiappa.kv` non è cambiato.
+
+* [**NEXT** Un sacco di talpe](talpe.md)
+* [**PREV** La comparsa di una talpa](una_talpa.md)
+* [**INDEX** Indice](start.md)
