@@ -82,59 +82,47 @@ Ora potremmo iniziare a sperimentare un sacco di strade come interrompere l'anim
 problema è che il nostro punto attivo sono le talpe, la cosa migliore è rimuoverle tutte: infatti rimuovendo la talpa
 si evita qualsiasi altro evento di punteggio.
 
-Sarebbe possibile guardare tutti i componenti dentro a `AcchiappaLaTalpa` con `self.children` e selezionare solo le 
-talpe direttamente o usando qualche trucco sui nomi; ma facciamo le cose direttamente: creiamo un contenitore e tutte
-le volte che aggiungiamo una talpa la aggiungiamo anche al contenitore e quando rimuoviamo, rimuoviamo anche dal 
-contenitore.
+E' possibile guardare tutti i componenti dentro a `AcchiappaLaTalpa` con `self.children` e selezionare solo le 
+talpe; per farlo dobbiamo mettere un identificativo in tutte le talpe per riconoscerle dalle altre cose come
+le scritte. Per fare questo è sufficiente definire il campo `id = "talpa"` nella classe `Talpa` e poi prendere tutti
+i componenti con `id == "talpa"`.
 
-Il contenitore è in `AcchiappaLaTalpa`, si chiama `talpe` e è un `set()` (insieme vuoto). Per aggiungere a un insieme
-si usa la funzione `add()` e per rimuovere `discard()` (o `remove()`). Qundi modifichiamo la classe `AcchiappaLaTalpa` 
-per definire `talpe` e aggiornarlo quando la talpa viene aggiunta e rimossa.
+Modifichiamo quindi `Talpa`:
 
 ```python
-class AcchiappaLaTalpa(FloatLayout):
-    ... e altra roba (DA NON SCRIVERE)
-    talpe = set()
-
-    def start(self):
-        self.prese = 0
-        self.mancate = 0
-        self.talpe = set()
-        Clock.schedule_interval(self.talpa, self.intervallo_talpe)
-
-    def talpa(self, *args):
-        ... e altra roba (DA NON SCRIVERE)
-        self.talpe.add(talpa)
-
-    ... e altra roba (DA NON SCRIVERE)
-
-    def rimuovi_talpa(self, talpa):
-        Animation.cancel_all(talpa)
-        self.remove_widget(talpa)
-        self.talpe.discard(talpa)
-
-    ... e altra roba (DA NON SCRIVERE)
+class Talpa(Button):
+    id = "talpa"
 ```
 
-Le righe da aggiungere alla classe `AcchiappaLaTalpa` sono 4:
+E facciamo una funzione `talpe()` in `AcchiappaLaTalpa` che ritorna tutte le talpe presenti tra i figli:
+ 
+```python
+    def talpe(self):
+        talpe = []
+        for talpa in self.children:
+            if talpa.id == "talpa":
+                talpe.append(talpa)
+        return talpe
+``` 
 
-1. `talpe = set()` all'inizio
-2. `self.talpe = set()` nella funzione `start()`
-3. `self.talpe.add(talpa)` in fondo alla funzione `talpa()`
-4. `self.talpe.discard(talpa)` in fondo alla funzione `rimuovi_talpa()`
-
-Provate, tutto funzionerà come prima ma... ora conosciamo **Esattamente** quali sono le talpe presenti al momemto dello 
-`stop()`: modifichiamo quindi `stop()` per rimuoverle
+Ora ci manca solo rimuovere tutte le talpe nella funzione `stop()` di `AcchiappaLaTalpa`
 
 ```python
     def stop(self):
         Clock.unschedule(self.talpa)
-        for talpa in self.talpe.copy():
+        for talpa in self.talpe():
             self.rimuovi_talpa(talpa)
 ```
 
-Abbiamo usato `self.talpe.copy()` invece che semplicemnete `self.talpe` dato che `rimuovi_talpa()` modifica talpe e non
-si può fare un ciclo su una cosa che cambia.
+**Nota** La funzione `talpe()` poteva essere anche scritta in maniera più concisa:
+
+```python
+    def talpe(self):
+        return [talpa for talpa in self.children if talpa.id == "talpa"]
+``` 
+
+stesso identico risultato... se vi sembra che sia chiara usatela pure. **La cosa più importante è sempre
+un programma chiaro e non più lungo o più corto.**
 
 ## Riassumendo
 
@@ -151,7 +139,7 @@ from kivy.clock import Clock
 
 
 class Talpa(Button):
-    pass
+    id = "talpa"
 
 
 class AcchiappaLaTalpa(FloatLayout):
@@ -160,12 +148,10 @@ class AcchiappaLaTalpa(FloatLayout):
     dimansione_talpa = 0.1
     durata_talpa = 2
     intervallo_talpe = 1.5
-    talpe = set()
 
     def start(self):
         self.prese = 0
         self.mancate = 0
-        self.talpe = set()
         Clock.schedule_interval(self.talpa, self.intervallo_talpe)
 
     def talpa(self, *args):
@@ -176,7 +162,6 @@ class AcchiappaLaTalpa(FloatLayout):
                                transition="out_elastic")
         animazione.on_complete = self.talpa_mancata
         animazione.start(talpa)
-        self.talpe.add(talpa)
 
     def talpa_colpita(self, talpa):
         self.prese += 1
@@ -189,15 +174,21 @@ class AcchiappaLaTalpa(FloatLayout):
     def rimuovi_talpa(self, talpa):
         Animation.cancel_all(talpa)
         self.remove_widget(talpa)
-        self.talpe.discard(talpa)
 
     def on_mancate(self, instance, mancate):
         if self.mancate == 3:
             self.stop()
 
+    def talpe(self):
+        talpe = []
+        for talpa in self.children:
+            if talpa.id == "talpa":
+                talpe.append(talpa)
+        return talpe
+
     def stop(self):
         Clock.unschedule(self.talpa)
-        for talpa in self.talpe.copy():
+        for talpa in self.talpe():
             self.rimuovi_talpa(talpa)
 
 

@@ -8,3 +8,8 @@ Aggiungeremo un bottone per iniziare:
 
 Chiuderemo con alcuni indizi per rendere il gioco più difficile man mano che si colpiscono le talpe oltre alle idee
  di cosa cambiare o evolvere.
+ 
+## Aggiungiamo il bottone di start
+
+Per prima cosa definiamo l'elemento grafico in `acchiappa.kv`: un bottone di circa un sesto delle dimensioni totali e
+messo al centro con scritto `START`.
