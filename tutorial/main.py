@@ -1,10 +1,9 @@
 from kivy.animation import Animation
 from kivy.app import App
-from kivy.core.window import Window
+from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty
-from kivy.clock import Clock
 
 
 class Talpa(Button):
@@ -19,35 +18,20 @@ class AcchiappaLaTalpa(FloatLayout):
     prese = NumericProperty(0)
     mancate = NumericProperty(0)
     dimansione_talpa = 0.1
-    durata_talpa = 2
+    durata_talpa = 2.0
     intervallo_talpe = 1.5
-    start_btn = None
-
-    def __init__(self, **kwargs):
-        super(AcchiappaLaTalpa, self).__init__(**kwargs)
-        self._keyboard = Window.request_keyboard(self._keyboard_closed, self, 'text')
-        self._keyboard.bind(on_key_down=self._on_keyboard_down)
-
-    def _keyboard_closed(self):
-        print('My keyboard have been closed!')
-        self._keyboard.unbind(on_key_down=self._on_keyboard_down)
-        self._keyboard = None
-
-    def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
-        if keycode[1] == 'escape':
-            keyboard.release()
-            # Per stampare le schermate
-        if text == "p":
-            self.export_to_png("screenshot.png")
-        return True
+    bottone_start = None
 
     def aggiungi_start(self):
-        self.start_btn = Start()
-        self.start_btn.bind(on_press=self.start)
-        self.add_widget(self.start_btn)
+        self.bottone_start = Start()
+        self.add_widget(self.bottone_start)
+        self.bottone_start.bind(on_press=self.start_premuto)
 
-    def start(self, *args):
-        self.remove_widget(self.start_btn)
+    def start_premuto(self, pressed):
+        self.remove_widget(self.bottone_start)
+        self.start()
+
+    def start(self):
         self.prese = 0
         self.mancate = 0
         Clock.schedule_interval(self.talpa, self.intervallo_talpe)
@@ -95,6 +79,8 @@ class AcchiappaApp(App):
     def build(self):
         acchiappa = AcchiappaLaTalpa()
         acchiappa.aggiungi_start()
+        from tutorial.utils import PrintScreenshoot
+        self._print_handler = PrintScreenshoot(acchiappa)
         return acchiappa
 
 
