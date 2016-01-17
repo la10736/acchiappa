@@ -223,7 +223,7 @@ if __name__ == "__main__":
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
-    background_normal: '../data/talpa' + str(randint(1, 5)) + '.jpeg'
+    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpeg'
 
 <Start>:
     size_hint: 0.15, 0.15
@@ -263,8 +263,9 @@ tempi di un quarto:
 3. Cambiamo i valori di `self.durata_talpa *= 0.75` e `self.intervallo_talpe *= 0.75`
 4. Facciamo ripartire il l'orologio delle talpe fermandolo e facendolo ripartire (`Clock.unschedule(self.talpa)` e 
 `Clock.schedule_interval(self.talpa, self.intervallo_talpe)`)
-5. Ricordiamoci di mettere di nuovo i valori originali in `self.durata_talpa` e `self.intervallo_talpe` nella funzione
-`start()` (I valori originali si trovano in `AcchiappaLaTalpa.durata_talpa` e `AcchiappaLaTalpa.intervallo_talpe`
+5. Ricordiamoci di mettere di nuovo i valori originali in `self.durata_talpa` e `self.intervallo_talpe` quando
+ `prese` cambia e è `0` (I valori originali si trovano in `AcchiappaLaTalpa.durata_talpa` e 
+ `AcchiappaLaTalpa.intervallo_talpe`)
 
 ### Animazioni
 

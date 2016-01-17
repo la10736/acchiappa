@@ -21,6 +21,8 @@ class AcchiappaLaTalpa(FloatLayout):
     durata_talpa = 2.0
     intervallo_talpe = 1.5
     bottone_start = None
+    rapporto_tempi = 0.75
+    numero_aumento = 5
 
     def aggiungi_start(self):
         self.bottone_start = Start()
@@ -61,6 +63,22 @@ class AcchiappaLaTalpa(FloatLayout):
         if self.mancate == 3:
             self.stop()
 
+    def on_prese(self, instance, prese):
+        if self.prese == 0:
+            self.durata_talpa = AcchiappaLaTalpa.durata_talpa
+            self.intervallo_talpe = AcchiappaLaTalpa.intervallo_talpe
+        elif self.cambiare_frequenza():
+            self.cambia_frequenza(self.rapporto_tempi)
+
+    def cambiare_frequenza(self):
+        return self.prese / self.numero_aumento * self.numero_aumento == self.prese
+
+    def cambia_frequenza(self, rapporto):
+        self.durata_talpa *= rapporto
+        self.intervallo_talpe *= rapporto
+        Clock.unschedule(self.talpa)
+        Clock.schedule_interval(self.talpa, self.intervallo_talpe)
+
     def talpe(self):
         talpe = []
         for talpa in self.children:
@@ -79,8 +97,6 @@ class AcchiappaApp(App):
     def build(self):
         acchiappa = AcchiappaLaTalpa()
         acchiappa.aggiungi_start()
-        from tutorial.utils import PrintScreenshoot
-        self._print_handler = PrintScreenshoot(acchiappa)
         return acchiappa
 
 

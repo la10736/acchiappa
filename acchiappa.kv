@@ -1,17 +1,16 @@
 #:kivy 1.0.9
-
+#:import random random.random
+#:import randint random.randint
 
 <Talpa>:
-    size_hint: None, None
-    path: 'data/talpa{}.jpeg'.format(self.numero)
-    background_normal: self.path
-    background_down: self.path
-
+    size_hint: 0.05, 0.05
+    pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
+    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpeg'
 
 <Start>:
-    size_hint: 1.0/6, 1.0/6
+    size_hint: 0.15, 0.15
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
-    text: "Start"
+    text: 'START'
 
 <AcchiappaLaTalpa>:
     Label:
