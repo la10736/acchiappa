@@ -13,7 +13,7 @@ package.domain = org.ninja
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,jpeg,kv,atlas
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -42,7 +42,7 @@ requirements = kivy
 #presplash.filename = %(source.dir)s/data/presplash.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/data/icon.jpeg
+icon.filename = %(source.dir)s/data/icon.jpg
 
 # (str) Supported orientation (one of landscape, portrait or all)
 orientation = landscape

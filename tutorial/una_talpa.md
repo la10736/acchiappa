@@ -20,14 +20,14 @@ class Talpa(Button):
 ```
 
 In `acchiappa.kv` aggiungiamo la descrizione della talpa dove dobbiamo dire che immagine usere. Le immagini sono 
-nella directory `data` e sono del tipo `talpa<nr>.jpeg` dove `<nr>` è un numero da 1 a 5. Per ora usiamo solo
-una immagine `data/tapla1.jpeg`.
+nella directory `data` e sono del tipo `talpa<nr>.jpg` dove `<nr>` è un numero da 1 a 5. Per ora usiamo solo
+una immagine `data/tapla1.jpg`.
 
 ```kv
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.3, "center_y": 0.7}
-    background_normal: 'data/talpa1.jpeg'
+    background_normal: 'data/talpa1.jpg'
 ```
 
 Abbiamo fissato le dimensioni in proporzione allo schermo e una posizione fissa. Ci manca solo aggiungere questa
@@ -51,7 +51,7 @@ class AcchiappaLaTalpa(FloatLayout):
         self.add_widget(talpa)
 ```
 
-Se proviamo vedremo comparire la talpa con una immagine. Se proviamo cambiare il numero in `'data/talpa1.jpeg'` 
+Se proviamo vedremo comparire la talpa con una immagine. Se proviamo cambiare il numero in `'data/talpa1.jpg'` 
 con `2` o `3` vedremo altre talpe. Cambiando il valore di `center_x` e `center_y` sposteremo la talpa per lo schermo.
 
 ## In un posto a caso
@@ -73,7 +73,7 @@ Modifichiamo quindi `<Talpa>` come:
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
-    background_normal: 'data/talpa1.jpeg'
+    background_normal: 'data/talpa1.jpg'
 ```
 
 Provate ...a ogni avvio na posizione diversa!
@@ -94,7 +94,7 @@ Modifichiamo quindi `<Talpa>` come:
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
-    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpeg'
+    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpg'
 ```
 
 A ogni partenza una talpa diversa.
@@ -184,7 +184,7 @@ class AcchiappaLaTalpa(FloatLayout):
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
-    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpeg'
+    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpg'
 
 <AcchiappaLaTalpa>:
     Label:

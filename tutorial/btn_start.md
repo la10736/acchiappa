@@ -223,7 +223,7 @@ if __name__ == "__main__":
 <Talpa>:
     size_hint: 0.05, 0.05
     pos_hint: {"center_x": 0.05 + 0.9 * random(), "center_y": 0.05 + 0.9 * random()}
-    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpeg'
+    background_normal: 'data/talpa' + str(randint(1, 5)) + '.jpg'
 
 <Start>:
     size_hint: 0.15, 0.15
