@@ -37,12 +37,12 @@ nomi chiari. Aggiungiamo quindi alla classe `AcchiappaLaTalpa` i parametri `dime
 
 ```python
 class AcchiappaLaTalpa(FloatLayout):
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
 
     dimansione_talpa = 0.1
-    durata_talpa = 2
+    durata_talpa = 2.0
 
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
     
     def talpa(self, *args):
         talpa = Talpa()
@@ -51,7 +51,7 @@ class AcchiappaLaTalpa(FloatLayout):
         animazione = Animation(size_hint=(self.dimansione_talpa, self.dimansione_talpa), duration=self.durata_talpa)
         animazione.start(talpa)
 
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
 ```
 
 Ora proviamo a cambiare il tipo di animazione sostituendo `animazione = Animation(...)` con:
@@ -141,7 +141,7 @@ class AcchiappaLaTalpa(FloatLayout):
     prese = NumericProperty(0)
     mancate = NumericProperty(0)
     dimansione_talpa = 0.1
-    durata_talpa = 2
+    durata_talpa = 2.0
 
     def start(self):
         self.prese = 0

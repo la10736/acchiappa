@@ -48,7 +48,7 @@ chiamiamola alla fine della funzione `stop()` per avere il bottone una volta che
 
 ```python
     def stop(self):
-        ... e altra roba (DA NON SCRIVERE)
+        ... altro (NON TOCCARE E NON SCRIVERE)
         self.aggiungi_start()
 ```
 
@@ -90,7 +90,7 @@ La classe `AcchiappaLaTalpa` diventa quindi:
 
 ```python
 class AcchiappaLaTalpa(FloatLayout):
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
     bottone_start = None
 
     def aggiungi_start(self):
@@ -102,7 +102,7 @@ class AcchiappaLaTalpa(FloatLayout):
         self.remove_widget(self.bottone_start)
         self.start()
 
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
 ```
 
 ### Aggiungiamo START anche all'inizio
@@ -146,7 +146,7 @@ class AcchiappaLaTalpa(FloatLayout):
     prese = NumericProperty(0)
     mancate = NumericProperty(0)
     dimansione_talpa = 0.1
-    durata_talpa = 2
+    durata_talpa = 2.0
     intervallo_talpe = 1.5
     bottone_start = None
 

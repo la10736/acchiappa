@@ -18,7 +18,7 @@ e modifichiamo `AcchiappaLaTalpa` e la funzion `start()` come:
 
 ```python
 class AcchiappaLaTalpa(FloatLayout):
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
 
     intervallo_talpe = 1.5
 
@@ -27,7 +27,7 @@ class AcchiappaLaTalpa(FloatLayout):
         self.mancate = 0
         Clock.schedule_interval(self.talpa, self.intervallo_talpe)
 
-    ... e altra roba (DA NON SCRIVERE)
+    ... altro (NON TOCCARE E NON SCRIVERE)
 ```
 
 ## Massimo 3 errori
@@ -146,7 +146,7 @@ class AcchiappaLaTalpa(FloatLayout):
     prese = NumericProperty(0)
     mancate = NumericProperty(0)
     dimansione_talpa = 0.1
-    durata_talpa = 2
+    durata_talpa = 2.0
     intervallo_talpe = 1.5
 
     def start(self):
