@@ -251,8 +251,9 @@ if __name__ == "__main__":
 Adesso cosa possiamo fare?
 
 1. Accelerare il gioco man mano che colpiamo le talpe
-2. Cambiare l'animazione delle talpe (magari muovendole anche)
-3. Cambiare i colori
+2. Far vibrare il telefono quando colpiamo la talpa
+3. Cambiare l'animazione delle talpe (magari muovendole anche)
+4. Cambiare i colori
 
 ### Accelerare
 Guardiamo gli ingredienti per il primo punto dicendo che ogni dieci talpe il gioco diventapiù veloce accorciando i 
@@ -266,6 +267,36 @@ tempi di un quarto:
 5. Ricordiamoci di mettere di nuovo i valori originali in `self.durata_talpa` e `self.intervallo_talpe` quando
  `prese` cambia e è `0` (I valori originali si trovano in `AcchiappaLaTalpa.durata_talpa` e 
  `AcchiappaLaTalpa.intervallo_talpe`)
+
+### Vibrare il telefono
+
+E' molto semplice attivare la vibrazione su device android:
+
+Per far vibrare il telefono per 0.5 secondi usare:
+
+```python
+from plyer import vibrator
+vibrator.vibrate(0.5) 
+```
+Ma il vostro computer *non può vibrare*... quando siete sul computer potete usare una animazione su 
+`AcchiappaLaTalpa` spostandola: spostiamo sempre e quando possiamo vibriamo
+
+```python
+from plyer import vibrator
+    
+    ...
+    
+    def vibra(self, tempo):
+        def vibra(self, tempo):
+            animazione = Animation(x=self.width * 0.01, duration=tempo/8.0)
+            animazione += Animation(x=0, duration=tempo*7/8.0, transition="out_elastic")
+            animazione.start(self)
+            try:
+                vibrator.vibrate(tempo)
+            except NotImplementedError:
+                pass
+```
+E chiammiamola in `talpa_colpita()` con `self.vibra(0.5)`.
 
 ### Animazioni
 

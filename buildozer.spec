@@ -29,7 +29,7 @@ version = 1.0.0
 
 # (list) Application requirements
 # comma seperated e.g. requirements = sqlite3,kivy
-requirements = kivy
+requirements =  plyer,kivy==master
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -39,7 +39,7 @@ requirements = kivy
 #garden_requirements =
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/data/presplash.png
+presplash.filename = %(source.dir)s/data/talpa4.jpg
 
 # (str) Icon of the application
 icon.filename = %(source.dir)s/data/icon.jpg
@@ -56,7 +56,7 @@ fullscreen = 1
 #
 
 # (list) Permissions
-#android.permissions = INTERNET
+android.permissions = VIBRATE
 
 # (int) Android API to use
 #android.api = 19
@@ -83,7 +83,7 @@ fullscreen = 1
 #android.ant_path =
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-#android.p4a_dir =
+android.p4a_dir = /home/ninja/.buildozer/android/python-for-android
 
 # (list) python-for-android whitelist
 #android.p4a_whitelist =

@@ -4,6 +4,7 @@ from kivy.clock import Clock
 from kivy.uix.button import Button
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty
+from plyer import vibrator
 
 
 class Talpa(Button):
@@ -50,6 +51,7 @@ class AcchiappaLaTalpa(FloatLayout):
     def talpa_colpita(self, talpa):
         self.prese += 1
         self.rimuovi_talpa(talpa)
+        self.vibra(0.5)
 
     def talpa_mancata(self, talpa):
         self.mancate += 1
@@ -91,6 +93,15 @@ class AcchiappaLaTalpa(FloatLayout):
         for talpa in self.talpe():
             self.rimuovi_talpa(talpa)
         self.aggiungi_start()
+
+    def vibra(self, tempo):
+        animazione = Animation(x=self.width * 0.01, duration=tempo/8.0)
+        animazione += Animation(x=0, duration=tempo*7/8.0, transition="out_elastic")
+        animazione.start(self)
+        try:
+            vibrator.vibrate(tempo/3)
+        except NotImplementedError:
+            pass
 
 
 class AcchiappaApp(App):
