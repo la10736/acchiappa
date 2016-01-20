@@ -110,6 +110,7 @@ Dobbiamo scrivere nella logica (`main.py`) che il componente `AcchiappaLaTalpa` 
 Aggiungete all'inizio di `main.py`
 
 ```python
+from kivy.properties import NumericProperty
 ```
 
 e modificate la classe `AcchiappaLaTalpa` sempre di `main.py` in
