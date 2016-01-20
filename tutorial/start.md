@@ -16,3 +16,6 @@ Il gioco è semplice:
 1. [Schermo con punteggi](punteggi.md)
 2. [La comparsa di una talpa](una_talpa.md)
 3. [La talpa animata](talpa_animata.md)
+4. [Un sacco di talpe](talpe.md)
+5. [Bottone di Start](btn_start.md)
+
