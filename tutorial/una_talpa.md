@@ -3,25 +3,23 @@
 Siamo pronti a far comparire una talpa: Per prima cosa definiamo la classe `Talpa` tra le logiche di `main.py` e poi la 
 parte grafica in `acchiappa.kv`.
 
-1. Si tratta di un bottone per ora senza logica
-2. 
-
-in testa a `main.py` aggiungere la definizione di bottone:
+Le talpe non sono altro che bottoni e per ora non fanno altro. In testa a `main.py` aggiungere la definizione di 
+bottone:
 
 ```python
 from kivy.uix.button import Button
 ```
 
-e dopo le la classe che è un `Button` senza nessuna logica
+e dopo le la classe che è un `Button` senza niente dentro
 
 ```python
 class Talpa(Button):
     pass
 ```
 
-In `acchiappa.kv` aggiungiamo la descrizione della talpa dove dobbiamo dire che immagine usere. Le immagini sono 
-nella directory `data` e sono del tipo `talpa<nr>.jpg` dove `<nr>` è un numero da 1 a 5. Per ora usiamo solo
-una immagine `data/tapla1.jpg`.
+In `acchiappa.kv` aggiungiamo la descrizione della talpa dove dobbiamo dire che immagine usare. Le immagini sono 
+nella directory `data` e hanno un nome tipo `talpa<nr>.jpg` dove `<nr>` è un numero che va da 1 a 5. Per ora usiamo solo
+una immagine: `data/tapla1.jpg`.
 
 ```kv
 <Talpa>:
@@ -76,9 +74,9 @@ Modifichiamo quindi `<Talpa>` come:
     background_normal: 'data/talpa1.jpg'
 ```
 
-Provate ...a ogni avvio na posizione diversa!
+Provate ... a ogni avvio la talpa coparirà in una posizione diversa!
 
-## ... E una immagine a caso
+## ... Con una immagine a caso
 
 Aggiungete in alto al file `acchiappa.kv` un'altra riga
 
@@ -86,9 +84,7 @@ Aggiungete in alto al file `acchiappa.kv` un'altra riga
 #:import randint random.randint
 ```
 
-e cambiate `<Talpa>` in 
-
-Modifichiamo quindi `<Talpa>` come:
+e cambiate `<Talpa>` e quello che contiene con
 
 ```kv
 <Talpa>:

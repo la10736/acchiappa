@@ -25,7 +25,7 @@ testo `START`. Quindi in `acchiappa.kv` mettiamo
     text: 'START'
 ```
 
-in `main.py` aggiungiamo la classe `Start` che è un sempliebottone:
+in `main.py` aggiungiamo la classe `Start` che è un semplice bottone:
 
 ```python
 class Start(Button):
@@ -80,7 +80,7 @@ Proviamo, aspettiamo, clicliamo.... e funziona, ma il bottone `START` rimane in 
 ### Togliere il bottone di START quando viene premuto
 
 Per togliere il bottone potremmo usare `id` come abbiamo fatto per le talpe, ma è uno solo e quindi possiamo fare 
-in maniera più diretta: 
+più direttamente: 
 
 1. Aggiungiamo a `AcchiappaLaTalpa` un campo `bottone_start = None`
 2. Lo usiamo in `aggiungi_start()` al posto del nome locale `bottone_start`
@@ -256,7 +256,7 @@ Adesso cosa possiamo fare?
 4. Cambiare i colori
 
 ### Accelerare
-Guardiamo gli ingredienti per il primo punto dicendo che ogni dieci talpe il gioco diventapiù veloce accorciando i 
+Guardiamo gli ingredienti per il primo punto dicendo che ogni dieci talpe il gioco diventa più veloce accorciando i 
 tempi di un quarto:
 
 1. Quando `prese` diventa *divisibile per 10* (`self.prese / 10 * 10 == self.prese`)
@@ -296,7 +296,7 @@ from plyer import vibrator
             except NotImplementedError:
                 pass
 ```
-E chiammiamola in `talpa_colpita()` con `self.vibra(0.5)`.
+E chiammiamola in `talpa_colpita()` con `self.vibra(0.3)`.
 
 ### Animazioni
 

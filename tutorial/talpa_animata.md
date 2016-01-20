@@ -2,14 +2,14 @@
 
 La talpa deve 
 
-1. Nascere piccola e ingrandirsi
+1. Nascere piccola e per poi ingrandirsi
 2. Scomaparire dopo un certo tempo
 3. Aumentare le talpe mancate se non viene colpita
 
 ## Animazione
 
 Volgliamo creare una animazione dove la talpa modifica la sua dimensione nel tempo. **kivy** dispone di uno strumento
-molto comodo per questo tipo di animazioni: `Animation`.
+molto comodo per questo tipo di attività: `Animation`.
 
 E' sufficiente costruire una `Animation` dicendo 
 
@@ -17,10 +17,10 @@ E' sufficiente costruire una `Animation` dicendo
 2. Quanto deve durare
 3. ( *Opzionale* ) come eseguire questa animazione
 
-e applicarla alla talpa.
+e applicarla a quello che si vuole animare.
 
-Quindi dove costruiamo la talpa (in fondo alla funzione `talpa()`) costruiamo una animazione e facciamo partire: la
-funzione `talpa()` diventa quindi la seguente
+Quindi dove costruiamo la talpa (in fondo alla funzione `talpa()`) costruiamo una animazione e la facciamo partire: la
+funzione `talpa()` diventa quindi
  
 ```python
     def talpa(self, *args):
@@ -54,7 +54,7 @@ class AcchiappaLaTalpa(FloatLayout):
     ... altro (NON TOCCARE E NON SCRIVERE)
 ```
 
-Ora proviamo a cambiare il tipo di animazione sostituendo `animazione = Animation(...)` con:
+Ora proviamo a cambiare il tipo di animazione aggiungendo il parametro `transition="out_elastic"`:
 
 ```python
 animazione = Animation(size_hint=(self.dimansione_talpa, self.dimansione_talpa), duration=self.durata_talpa, 
@@ -94,7 +94,7 @@ Aggiungiamo quindi alla classe `AcchiappaLaTalpa` la funzione `talpa_mancata()`:
 ```
 
 e modifichiamo `talpa()` aggiungendo `animazione.on_complete = self.talpa_mancata` appena prima di 
-`animazione.start(talpa)`.La funzione `talpa()` diventa quindi:
+`animazione.start(talpa)`. La funzione `talpa()` diventa quindi:
 
 ```python
     def talpa(self, *args):
@@ -107,8 +107,8 @@ e modifichiamo `talpa()` aggiungendo `animazione.on_complete = self.talpa_mancat
         animazione.start(talpa)
 ```
 
-Provate, la talpa sparisce e il numero di quelle mancate aumenta. **Ma provate a cliccarla, il aumenteranno sia le 
-prese che le mancate**
+Provate, la talpa sparisce e il numero di quelle mancate aumenta. **Ma provate a cliccarlaç aumenteranno sia le 
+prese che le mancate.**
 
 Quello che succede è che l'animazione viene completata anche dopo che la talpa viene rimossa: dobbiamo interrompere 
 l'animazione prima di rimuovere la talpa. Per farlo basta aggiungere `Animation.cancel_all(talpa)` a `rimuovi_talpa()` 

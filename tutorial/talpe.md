@@ -6,7 +6,7 @@ sbagliamo 3.
 # La comparsa delle talpe
 
 Quello che dobbiamo fare è chiamare a intervalli regolari la funzione `talpa()`. Per fare questo usiamo un 
-`Clock.schedule_interval(self.talpa, self.intervallo_talpe)` nella funzione `start()` dove : questa riga significa 
+`Clock.schedule_interval(self.talpa, self.intervallo_talpe)` nella funzione `start()`: questa riga significa 
 *chiama `talpa()` ogni `intervallo_talpe` secondi*. Quindi in alto in `main.py` ricordiamo che vogliamo usare `Clock` 
 con
 
@@ -78,14 +78,13 @@ faremo l'interruzione.
 
 ## Correzzione del Baco
 
-Ora potremmo iniziare a sperimentare un sacco di strade come interrompere l'animazione bloccare i punteggi, ma il vero
-problema è che il nostro punto attivo sono le talpe, la cosa migliore è rimuoverle tutte: infatti rimuovendo la talpa
-si evita qualsiasi altro evento di punteggio.
+Ora potremmo iniziare a sperimentare un sacco di strade come interrompere l'animazione bloccare i punteggi. Ma la
+chiave è tutta nelle talpe: sel lerimuoviamo tutte si evita qualsiasi altro cambiamento di punteggio.
 
 E' possibile guardare tutti i componenti dentro a `AcchiappaLaTalpa` con `self.children` e selezionare solo le 
 talpe; per farlo dobbiamo mettere un identificativo in tutte le talpe per riconoscerle dalle altre cose come
 le scritte. Per fare questo è sufficiente definire il campo `id = "talpa"` nella classe `Talpa` e poi prendere tutti
-i componenti con `id == "talpa"`.
+i componenti dove `id == "talpa"`.
 
 Modifichiamo quindi `Talpa`:
 
