@@ -125,7 +125,7 @@ Ora eseguite e tutto funzionerà con i due valori a `0`.
 
 ## Il punteggio cambia da solo
 
-La cosa bella ora è che **tutte le volte che modifichiamo `prese` o `mancate` il nuovo valore viene visualizzato.
+La cosa bella ora è che **tutte le volte che modifichiamo `prese` o `mancate` il nuovo valore viene visualizzato**.
 
 Perprovarlo costruiamo una funzione `start()` che poi useremo per iniziare il gioco dove cambiamo il punteggio:
 
