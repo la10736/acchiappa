@@ -82,7 +82,8 @@ if __name__ == "__main__":
 
 Proviamola in locale con tasto destro su `main.py` e click nel menù di *Run `main`*. Una finestra nera.
 
-Ora per provare la App riferitevi all'appendice [Compila e Installa](compila_e_installa.md).
+Ora per provare la App riferitevi all'appendice [Compila e Installa](compila_e_installa.md). **Attenzione, la prima 
+volta che fate la APP ci vuole MOLTO TEMPO**.
 
 ## I Dettagli di `buildozed.spec`
 
