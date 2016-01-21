@@ -14,11 +14,12 @@ collegato (`deploy`) e la esegue (`run`).
 
 ![Terminale](terminal.png)
 
+Oppure per i più pigri...
+
 ![Menù in Tools](tools.png)
 
-Nella seconda immagine trovate la strada per farlo senza scrivere, e usando una voce del menù.
 
-Una volta costruita la app nella directory `bin` il file che ha un nome del tipo
+Una volta costruita la app nella directory `bin` trovate un file che ha un nome del tipo
 
 ```
 AcchiappalaTalpa-1.0.0-debug.apk
@@ -26,7 +27,7 @@ AcchiappalaTalpa-1.0.0-debug.apk
 
 ![APK](apk.png)
 
-Questo è il file che potete caricare sul telefono per instalare il vostro gioco.
+Questo è il file che potete caricare sul telefono per instalare la vostra APP.
 
 Se tutto fosse a posto ora sul telefono collegato dovrebbe partire il gioco ma... ci sono troppe cose da fare e
 troppi dettagli che possono andare storto: per ora vediamo come fare in maniera sicura.
@@ -60,8 +61,8 @@ che in quello a cui è collegato fisicamente.
 
 Ora la copiamo su telefono:
 
-1. Mettete in primo piano anche la finestra del telefono
-2. Cliccate sul disegno di cartella con untatore in basso a sinistra
+1. Mettete in primo piano la finestra del telefono
+2. Cliccate sul disegno di cartella con puntatore in basso a sinistra
 3. Navigate su questa finestra come mostrato in figura per trovare la APP
 4. Trascinate la APP sulla memoria del telefono
 
