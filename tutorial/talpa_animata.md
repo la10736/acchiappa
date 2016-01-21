@@ -19,7 +19,7 @@ E' sufficiente costruire una `Animation` dicendo
 
 e applicarla a quello che si vuole animare.
 
-Quindi dove costruiamo la talpa (in fondo alla funzione `talpa()`) costruiamo una animazione e la facciamo partire: la
+Quindi dove costruiamo la talpa (in fondo alla funzione `talpa()`) definiamo anche una animazione e la facciamo partire: la
 funzione `talpa()` diventa quindi
  
 ```python
