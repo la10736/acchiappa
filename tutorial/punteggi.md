@@ -36,10 +36,10 @@ Proviamo a eseguire con tasto destro su `main.py` e **Run**: Schermo nero che po
 
 ## Punteggi
 
-Vogliamo mettere in alto a sinistra il punteggio bianco delle talpe colpite e in alto a destra quello reosso delle talpe 
+Vogliamo mettere in alto a sinistra il punteggio bianco delle talpe colpite e in alto a destra quello rosso delle talpe 
 mancate.
 
-Apriamo il file che descrive la grafica `acchiappa.kv` e aggiungiamo due `Label` ( *etichette* ) al componente 
+Apriamo il file della grafica `acchiappa.kv` e aggiungiamo due `Label` ( *etichette* ) al componente 
 `AcchiappaLaTalpa` facendo scrivere per ora i numeri fissi `0` e `1`: `<AcchiappaLaTalpa>` diventa
 
 ```kv
@@ -64,8 +64,8 @@ Eseguite di nuovo e troverete questo:
 
 Provate ora a modificare i valori di `font_size`, `center_x` e `top` per vedere cosa succede... anche il colore può 
 essere divertente dove 
- * `0,1,0,1` -> blu
- * `0,0,1,1` -> verde
+ * `0,1,0,1` -> verde
+ * `0,0,1,1` -> blù
  * `0.1,0.7,0.5` -> ?
 
 Ora tornate ai valori originali e sostituite nel primo `text` `"0"` con `str(root.prese)` e `"1"` con 
