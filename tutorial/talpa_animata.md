@@ -107,7 +107,7 @@ e modifichiamo `talpa()` aggiungendo `animazione.on_complete = self.talpa_mancat
         animazione.start(talpa)
 ```
 
-Provate, la talpa sparisce e il numero di quelle mancate aumenta. **Ma provate a cliccarlaç aumenteranno sia le 
+Provate, la talpa sparisce e il numero di quelle mancate aumenta. **Ma provate a cliccarla, aumenteranno sia le 
 prese che le mancate.**
 
 Quello che succede è che l'animazione viene completata anche dopo che la talpa viene rimossa: dobbiamo interrompere 
