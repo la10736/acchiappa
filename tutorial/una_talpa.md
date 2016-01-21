@@ -3,21 +3,21 @@
 Siamo pronti a far comparire una talpa: Per prima cosa definiamo la classe `Talpa` tra le logiche di `main.py` e poi la 
 parte grafica in `acchiappa.kv`.
 
-Le talpe non sono altro che bottoni e per ora non fanno altro. In testa a `main.py` aggiungere la definizione di 
+Le talpe non sono altro che bottoni che, per ora, non fanno nulla. In testa a `main.py` aggiungere la definizione di 
 bottone:
 
 ```python
 from kivy.uix.button import Button
 ```
 
-e dopo le la classe che è un `Button` senza niente dentro
+e dopo le la classe che è un `Button` vuoto
 
 ```python
 class Talpa(Button):
     pass
 ```
 
-In `acchiappa.kv` aggiungiamo la descrizione della talpa dove dobbiamo dire che immagine usare. Le immagini sono 
+In `acchiappa.kv` aggiungiamo la descrizione della talpa dove indichiamo che immagine usare. Le immagini sono 
 nella directory `data` e hanno un nome tipo `talpa<nr>.jpg` dove `<nr>` è un numero che va da 1 a 5. Per ora usiamo solo
 una immagine: `data/tapla1.jpg`.
 
